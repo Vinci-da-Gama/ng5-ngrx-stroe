@@ -1,0 +1,72 @@
+<h1>The Intro page</h1>
+<div class="row">
+	<div class="col-sm">
+		For action, type and payload is predefined key word. You have to use it.
+		<span class="badge badge-pill badge-secondary">
+			type is which action you want to apply.
+		</span>
+		<ul class="list-group">
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				Payload is the Data you want to use for the reducer.
+				<span class="badge badge-secondary badge-pill">Anything</span>
+			</li>
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				In Reducer, usually export interfaces and function and setup Initial Data
+			</li>
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				In Action, usually export const ACTION_NAME, export classes and export types of all classes
+				<span class="badge badge-secondary badge-pill">Anything</span>
+			</li>
+		</ul>
+	</div>
+	<div class="col-sm">
+		<div class="card">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">
+					<h2>Basic Load Payload
+						<span class="badge badge-secondary">ADD_INGREDIENT</span>
+					</h2>
+					return &#123;
+					<br />
+					<span class="badge badge-pill badge-info">
+						// list all passed in state and return them in return process
+					</span>
+					<br/> ...state,
+					<br>
+					<span class="badge badge-pill badge-info">
+						// assign all payload obj to ingredients, then assign all ingredients to ingredients attr.
+					</span>
+					<br /> ingredients: [...state.ingredients, action.payload]
+					<br /> &#125;;
+				</li>
+				<li class="list-group-item">Item 2</li>
+				<li class="list-group-item">Item 3</li>
+			</ul>
+		</div>
+	</div>
+	<div class="col-sm">
+		<ul class="list-group">
+			<li class="list-group-item">
+				<div class="list-group">
+					<a class="list-group-item list-group-item-action">
+						usually, you should load module lazyly, for demo, in this app, shopping-list would be loaded egolly.
+					</a>
+				</div>
+				if we have a module like shopping-list module which is loaded egolly, then in app.module.ts --> imports --> add --> StoreModule.forRoot(&#123;shoppingList:
+				shoppingListReducer&#125;) --> also import 'shoppingListReducer' --> If load lazyly, no need this
+				<span class="badge badge-pill badge-success">
+					StoreModule
+				</span>
+			</li>
+			<li class="list-group-item">
+
+			</li>
+			<li class="list-group-item">
+
+			</li>
+		</ul>
+	</div>
+	<div class="col-sm">
+		ha
+	</div>
+</div>

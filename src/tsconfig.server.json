@@ -1,0 +1,21 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"outDir": "../out-tsc/app",
+		"module": "commonjs",
+		"baseUrl": "./",
+		"paths": {
+			"@featCompo/*": ["featCompos/*"],
+			"@formMore/*": ["featureComponents/form-more/*"]
+		},
+		"types": []
+	},
+	"exclude": [
+		"test.ts",
+		"**/*.spec.ts",
+		"**/*.e2e-spec.ts"
+	],
+	"angularCompilerOptions": {
+		"entryModule": "app/app.server.module#AppServerModule"
+	}
+}
