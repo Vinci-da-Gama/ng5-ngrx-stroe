@@ -39,7 +39,10 @@
 					<br /> ingredients: [...state.ingredients, action.payload]
 					<br /> &#125;;
 				</li>
-				<li class="list-group-item">Item 2</li>
+				<li class="list-group-item">
+					when you do crud on store, when do reload or refresh, you need Start_Edit action, when you do details, you need ngOnDestory,
+					then do Stop_Edit --> These 2 are required for all actions, may be you try to make share module for these 2.
+				</li>
 				<li class="list-group-item">Item 3</li>
 			</ul>
 		</div>
@@ -52,14 +55,16 @@
 						usually, you should load module lazyly, for demo, in this app, shopping-list would be loaded egolly.
 					</a>
 				</div>
-				if we have a module like shopping-list module which is loaded egolly, then in app.module.ts --> imports --> add --> StoreModule.forRoot(&#123;shoppingList:
-				shoppingListReducer&#125;) --> also import 'shoppingListReducer' --> If load lazyly, no need this
+				if we have a module like shopping-list module which is loaded egolly, then in app.module.ts --> imports --> add --> StoreModule.forRoot(&#123;shoppingList(recucer
+				AppState name): shoppingListReducer(reducer function name)&#125;) --> also import 'shoppingListReducer' --> If load lazyly,
+				no need this
 				<span class="badge badge-pill badge-success">
 					StoreModule
 				</span>
 			</li>
 			<li class="list-group-item">
-
+				if you want to get default state data, use select function. when you use store, u donot need subscription, until it is details
+				page, because, it may cause reload troubles.
 			</li>
 			<li class="list-group-item">
 

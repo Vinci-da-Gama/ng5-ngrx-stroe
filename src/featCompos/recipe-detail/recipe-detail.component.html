@@ -9,8 +9,25 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xs-12">
-		<div class="btn-group" appDropdown>
+	<div class="col-sm">
+		<div class="btn-group">
+			<button type="button" class="btn btn-primary">Split me</button>
+			<div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+				<button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle></button>
+				<div class="dropdown-menu" ngbDropdownMenu>
+					<button class="dropdown-item" (click)="onAddToShoppingList()">
+						To Shopping List
+					</button>
+					<button class="dropdown-item" (click)="onEditRecipe()">
+						Edit Recipe
+					</button>
+					<button class="dropdown-item" (click)="onDeleteRecipe()">
+						Delete Recipe
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="btn-group" appDropdown>
 			<button type="button" class="btn btn-primary dropdown-toggle">
 				Manage Recipe
 				<span class="caret"></span>
@@ -26,7 +43,7 @@
 					<a style="cursor: pointer;" (click)="onDeleteRecipe()">Delete Recipe</a>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 	</div>
 </div>
 <div class="row">
