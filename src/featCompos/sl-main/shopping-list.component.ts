@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 // import { Ingredient } from '../../contracts/models/ingredient.model';
 import { IngredientsArrInterface } from '../../contracts/interfaces/ingredients-arr.interface';
 
-import * as fromSlReducer from '../../store/sl-store/shopping-list.reducers';
 import * as slActions from '../../store/sl-store/shopping-list.actions';
+import * as fromAppReducer from '../../store/app-store/app.reducers';
 
 @Component({
 	selector: 'app-shopping-list',
@@ -18,7 +18,7 @@ export class ShoppingListComponent implements OnInit {
 	slIngredientsState: Observable<IngredientsArrInterface>;
 
 	constructor(
-		private slStore: Store<fromSlReducer.AppState>
+		private slStore: Store<fromAppReducer.AppState>
 	) { }
 
 	ngOnInit() {

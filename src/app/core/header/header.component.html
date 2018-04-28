@@ -22,7 +22,7 @@
 					Shopping List
 				</a>
 			</li>
-			<ng-template [ngIf]="!authService.isAuthenticated()">
+			<ng-template [ngIf]="!(authState | async).isAuthen">
 				<li class="nav-item" routerLinkActive="active">
 					<a class="nav-link" routerLink="/signup">Register</a>
 				</li>
@@ -30,27 +30,29 @@
 					<a class="nav-link" routerLink="/signin">Login</a>
 				</li>
 			</ng-template>
-			<li class="nav-item" *ngIf="authService.isAuthenticated()">
+			<li class="nav-item" *ngIf="(authState | async).isAuthen">
 				<a class="nav-link" (click)="onLogout()">
 					Logout
 				</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item dropdown" *ngIf="!authService.isAuthenticated()">
+			<li class="nav-item" *ngIf="!(authState | async).isAuthen">
 				Need login to fetch Data
 			</li>
-			<li class="nav-item dropdown" *ngIf="authService.isAuthenticated()">
-				<a class="nav-link dropdown-toggle" id="ng5wpk-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Save/Fetch
-				</a>
-				<div class="dropdown-menu" aria-labelledby="ng5wpk-dropdown">
-					<a class="dropdown-item" (click)="onSaveData()">
-						Save Data
-					</a>
-					<a class="dropdown-item" (click)="onFetchData()">
-						Fetch Data
-					</a>
+			<li class="nav-item dropdown" *ngIf="(authState | async).isAuthen">
+				<div ngbDropdown placement="bottom-right" class="d-inline-block">
+					<button class="btn btn-outline-primary" id="handleDataDropdown" ngbDropdownToggle>
+						Save/Fetch
+					</button>
+					<div ngbDropdownMenu aria-labelledby="handleDataDropdown">
+						<button class="dropdown-item" (click)="onSaveData()">
+							Save Data
+						</button>
+						<button class="dropdown-item" (click)="onFetchData()">
+							Fetch Data
+						</button>
+					</div>
 				</div>
 			</li>
 		</ul>

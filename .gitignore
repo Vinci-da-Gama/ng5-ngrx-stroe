@@ -46,3 +46,4 @@ how-to-use.txt
 .editorconfig
 README.md
 tslint.json
+dist/

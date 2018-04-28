@@ -1,11 +1,28 @@
 <h1>The Intro page</h1>
 <div class="row">
 	<div class="col-sm">
-		For action, type and payload is predefined key word. You have to use it.
+		For action, type and payload are predefined key word. You have to use exactly same.
 		<span class="badge badge-pill badge-secondary">
 			type is which action you want to apply.
 		</span>
 		<ul class="list-group">
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				!environment.production ? StoreDevtoolsModule.instrument() : [] ==> this means only for dev mode start StoreDevtool. --->
+				ngrx/store also handle module whid is lazy load like (recipe Module). --> in recipe.reducer.ts define RecipeFeatureState
+				Interface, then in recipes.module.ts imports --> StoreModule.forFeature('recipes', RecipesReducer) --> 'recipes' is you
+				define a name for this reducer which will let app knew the recucer, also define it in reducer feature state as prop,
+				RecipesReducer is the reducer itself (need import).
+			</li>
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				But, anyway we should make AppState contains every thing in this app include lazy load store, then later, we donot need to
+				define 2 stores one is store another is lazy load store to access data in one component. --> In lazy load reducer -->
+				export interface RecipeFeatureState extends fromAppReducer.AppState &#123;...&#125; --> use extends to make lazy load
+				featuer state as part of AppState. (need import app.reducer.ts) --> when you do effects for lazy load module, you also
+				have to import Effects into recipe.module.ts and import EffectModule.forFeature([RecipeEffects]) -- RecipeEffect is the
+				effect file for recipe. In lazy load module, when define store, it would be Store&lt;fromRecipeReducer.RecipeFeatrueState&gt;,
+				In outside lazy load module, store would be Store&lt;fromAppReducer.AppState&gt; --> In short, if is lazy load, then
+				all about feature state, other modules are all about app state. Remember, when use effect, pls add Injectable to it.
+			</li>
 			<li class="list-group-item d-flex justify-content-between align-items-center">
 				Payload is the Data you want to use for the reducer.
 				<span class="badge badge-secondary badge-pill">Anything</span>
@@ -16,6 +33,26 @@
 			<li class="list-group-item d-flex justify-content-between align-items-center">
 				In Action, usually export const ACTION_NAME, export classes and export types of all classes
 				<span class="badge badge-secondary badge-pill">Anything</span>
+			</li>
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				when you use ngrx/effects to handle async func inside other async func, you should create Effect file first --> like auth.effects.ts
+				--> setup basic class for it, then go app.module.ts --> then import EffectModule from ngrx/effects --> then import specific
+				effect file like auth.effects.ts --> then go imports part, insert EffectModule.forRoot([AuthEffect]) --> This is basic
+				starting.
+			</li>
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				<span class="fz2em">
+					To start an Effect,
+				</span> you at lease assign one fake effect(authSignup = this.actions$.ofType(authActions.TRY_SIGNUP);), or you get error
+				in browser. --> This will solve callback inside callback problem. when this effect finish, then you want to change store
+				data or trigger other actions, then just use @Effect(), if you donot want to change store data anymore or trigger other
+				acitons, do @Effect(&#123;dispatch: false&#125;)
+				<span class="fz2em">
+					Thus, Effect is the way to apply actions and replace all services -- also use Effect to do HttpCli to CRUD Data.
+				</span>
+			</li>
+			<li class="list-group-item d-flex justify-content-between align-items-center">
+				in Effect --> to access store state, use withLatestFrom, this will return 2 things, 1 is action you defined in ofType, 2 is state get from itself.
 			</li>
 		</ul>
 	</div>
@@ -43,7 +80,20 @@
 					when you do crud on store, when do reload or refresh, you need Start_Edit action, when you do details, you need ngOnDestory,
 					then do Stop_Edit --> These 2 are required for all actions, may be you try to make share module for these 2.
 				</li>
-				<li class="list-group-item">Item 3</li>
+				<li class="list-group-item">
+					case (authActions.SIGNUP):
+					<br /> case (authActions.SIGNUP):
+					<br /> return &#123;
+					<br /> ...state,
+					<br /> isAuthen: true
+					<br /> &#125;
+					<br /> break;
+					<br /> In this case, these 2 case will execute same code(return);
+				</li>
+				<li class="list-group-item">
+					Usually, you should collect all reduces in app.reducers.ts by using ActionReducerMap from @ngrx/store, then inject app.reducers.ts
+					to app.module.ts
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -67,11 +117,13 @@
 				page, because, it may cause reload troubles.
 			</li>
 			<li class="list-group-item">
-
+				We should create a app.reducers.ts to collect all reducers, then later we can access all reducers state interfaces in this
+				global reducer --> the benefit is, you donot need for importing interface for sotre&lt;T&gt; to import entire reducer.
 			</li>
 		</ul>
 	</div>
 	<div class="col-sm">
-		ha
+		When do logout, we may have one more extra request error --> thus, in auth.interceptor.ts, add this.store.select('auth').take(1)...,
+		only take this value once to prevent multi request problem.
 	</div>
 </div>
