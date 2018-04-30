@@ -7,6 +7,7 @@
 		"start": "ng serve",
 		"build": "ng build",
 		"pd": "ng build --prod",
+		"devssl": "ng serve --ssl",
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e"
@@ -45,10 +46,10 @@
 		"ng-click-outside": "^3.3.0",
 		"ng2-nouislider": "^1.7.7",
 		"ngx-popper": "^2.7.1",
-		"ngx-spinner": "^1.2.0",
+		"ngx-spinner": "^2.0.0",
 		"nouislider": "^11.1.0",
 		"popper.js": "^1.14.3",
-		"rxjs": "^5.5.10",
+		"rxjs": "^5.5.6",
 		"zone.js": "^0.8.26"
 	},
 	"devDependencies": {
@@ -57,7 +58,7 @@
 		"@angular/language-service": "^5.2.10",
 		"@types/jasmine": "^2.8.6",
 		"@types/jasminewd2": "^2.0.3",
-		"@types/node": "^9.6.6",
+		"@types/node": "^10.0.0",
 		"codelyzer": "^4.3.0",
 		"jasmine-core": "^3.1.0",
 		"jasmine-spec-reporter": "^4.2.1",
@@ -69,7 +70,7 @@
 		"karma-jasmine-html-reporter": "^1.0.0",
 		"path": "^0.12.7",
 		"protractor": "^5.3.1",
-		"ts-node": "^6.0.0",
+		"ts-node": "^6.0.2",
 		"tslint": "^5.9.1",
 		"typescript": "^2.8.3"
 	}

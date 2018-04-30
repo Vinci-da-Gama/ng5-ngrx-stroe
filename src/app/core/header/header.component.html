@@ -22,6 +22,11 @@
 					Shopping List
 				</a>
 			</li>
+			<li class="nav-item" routerLinkActive="active">
+				<a class="nav-link" [routerLink]="['ng5intro']">
+					ng5-image-introduction
+				</a>
+			</li>
 			<ng-template [ngIf]="!(authState | async).isAuthen">
 				<li class="nav-item" routerLinkActive="active">
 					<a class="nav-link" routerLink="/signup">Register</a>

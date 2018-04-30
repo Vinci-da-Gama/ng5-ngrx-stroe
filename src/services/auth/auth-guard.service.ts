@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
+import 'rxjs/add/operator/take';
 
 import * as fromAppReducer from '../../store/app-store/app.reducers';
 import * as fromAuthReducer from '../../store/auth-store/auth.reducer';

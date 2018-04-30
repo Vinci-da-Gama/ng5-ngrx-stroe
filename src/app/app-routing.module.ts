@@ -13,7 +13,14 @@ const appRoutes: Routes = [
 		path: 'recipes',
 		loadChildren: '../featureModules/recipes/recipes.module#RecipesModule'
 	},
-	{ path: 'sl', component: ShoppingListComponent }
+	{
+		path: 'sl',
+		component: ShoppingListComponent
+	},
+	{
+		path: 'ng5intro',
+		loadChildren: '../featureModules/ng5-img-intro/ng5-img-intro.module#Ng5ImgIntroModule'
+	}
 ];
 
 @NgModule({

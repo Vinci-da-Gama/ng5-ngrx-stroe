@@ -17,13 +17,13 @@ export function authReducer(state = initialState, action: authActions.AuthAction
 			return {
 				...state,
 				isAuthen: true
-			}
+			};
 		case (authActions.LOGOUT):
 			return {
 				...state,
 				token: null,
 				isAuthen: false
-			}
+			};
 		case (authActions.SET_TOKEN):
 			const tokenObj = {
 				...state,
